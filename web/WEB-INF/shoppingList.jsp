@@ -15,38 +15,39 @@
     </head>
     <body>
         <h1>Shopping List</h1>
-        
+
         Hello, ${username}
         <a href="ShoppingList?logout">
             Logout
         </a>
-        
+
+
         <h2>List</h2>
-        <form>
+        <form method="post" action="">
             Add item: <input type="text" name="addListItem" value="${listItemInput}">
             <input type="submit" value="Add">
             <input type="hidden" name="action" value="add">
         </form>
 
+        <br>
 
-        <%-- <c:if test="${list.size > 0}"> --%>
-            <form>
+        <form method="post" action="">
+            <c:if test="${list != null}">
                 <table>
                     <c:forEach var="item" items="${list}"> 
-                    <tr>
-                        <td>
-                            <input type="radio" name="deleteListItem" value="${item.index}">
-                            ${item.name}
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="deleteListItem" value="${item}">
+                                ${item}
+                            </td>
+                        </tr>
                     </c:forEach>
                 </table>
                 <input type="submit" value="Delete">
                 <input type="hidden" name="action" value="delete">
             </form>
-            
-      <%-- </c:if> --%>
+        </c:if>
 
-        
+
     </body>
 </html>
